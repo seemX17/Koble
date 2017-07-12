@@ -43,7 +43,7 @@ public class RecentFragment extends Fragment {
         user.name = "Aditya Bhosle";
         user.message = "WonderWoman";
         user.time = "16:41";
-        user.image = "http://www.almanac.com/sites/default/files/styles/primary_image_in_article/public/images/tomatoplant.jpg";
+        user.image = "https://lh3.googleusercontent.com/-jrW4bMl3sCo/AAAAAAAAAAI/AAAAAAAAB0M/SOvt53SIH5Q/s90-p-rw-no/photo.jpg";
         users.add(user);
         user = new User();
         user.name = "Jude Silveira";
