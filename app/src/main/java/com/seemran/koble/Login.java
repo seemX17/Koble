@@ -33,11 +33,12 @@ public class Login extends AppCompatActivity {
     public CoordinatorLayout coordinatorlogin;
     public EditText Username,Password;
     static Typeface customFont;
+    public TextView register;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);  //To learn
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,10 +69,17 @@ public class Login extends AppCompatActivity {
                 if (text.equals("") || passwordText.equals("")){
                     Toast.makeText(Login.this, "Please check your username and password!", Toast.LENGTH_SHORT).show();
                 } else{
-                   registerUser();
+                   loginuser();
                 }
 
-          //
+            register = (TextView)findViewById(R.id.reglink);
+                register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Login.this,Register.class);
+                        startActivity(i);
+                    }
+                });
                 //Toast toastname = new Toast(activity, "mesagee", length of toast);
               //  Snackbar snackbarName = Snackbar.make(coordinatorlogin, "Mesage", Snackbar.LENGTH_INDEFINITE);
                // snackbarName.show();
@@ -79,7 +87,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void registerUser(){
+    private void loginuser(){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         final String username = Username.getText().toString().trim();
         final String password = Password.getText().toString().trim();

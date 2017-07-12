@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/coordinatorLogin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.seemran.koble.Login">
+    tools:context="com.seemran.koble.Login"
+    android:id="@+id/coordinatorLogin">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_layout_email"
                         android:layout_width="match_parent"
@@ -58,8 +60,8 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:hint="Please enter your username" />
-
                     </android.support.design.widget.TextInputLayout>
+
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/input_layout_password"
                         android:layout_width="match_parent"
@@ -83,6 +85,14 @@
                         android:backgroundTint="@color/colorPrimaryDark"
                         android:textColor="@color/textColor"
                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Signup"
+                        android:id="@+id/reglink"
+                        android:inputType="text"
+                        android:textColor="@color/textColor"/>
 
                 </LinearLayout>
 
