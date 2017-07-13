@@ -88,7 +88,7 @@ public class Register extends AppCompatActivity {
                         String message = resp.getString("message");
                         int status = resp.getInt("status");
                         Toast.makeText(Register.this, message, Toast.LENGTH_LONG).show();
-                        if (message.equals("Success")) {
+                        if (message.equals("User Exists")) {
                             Intent i = new Intent(Register.this, Home.class);
                             startActivity(i);
                         }
