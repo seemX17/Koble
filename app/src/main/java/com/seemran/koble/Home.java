@@ -25,7 +25,7 @@ public class Home extends AppCompatActivity {
             R.drawable.ic_recent,
             R.drawable.ic_call,
             R.drawable.ic_conference,
-            R.drawable.ic_settings,
+            R.drawable.ic_profile,
             R.drawable.ic_settings
     }; // This is an array of images
     @Override
