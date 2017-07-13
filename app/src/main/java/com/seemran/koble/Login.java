@@ -1,6 +1,7 @@
 package com.seemran.koble;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -34,6 +35,7 @@ public class Login extends AppCompatActivity {
     public EditText Username,Password;
     static Typeface customFont;
     public TextView register;
+    public static final String MyPREFERENCES = "MyPrefs" ;
 
 
     @Override
@@ -52,6 +54,17 @@ public class Login extends AppCompatActivity {
         Password.setTypeface(customFont);
 
 
+        SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        String restoredText = prefs.getString("Username", null);
+        if (restoredText != null) {
+          /*  String loadusername = prefs.getString("Username", "No name defined");//"No name defined" is the default value.
+            String loadpassword = prefs.getString("Password", " "); //0 is the default value.
+            Username.setText(loadusername);
+            Password.setText(loadpassword);*/
+            Intent i = new Intent(Login.this,Home.class);
+            startActivity(i);
+
+        }
 
     //}
 
@@ -72,6 +85,7 @@ public class Login extends AppCompatActivity {
                    loginuser();
                 }
 
+                //<register link>
             register = (TextView)findViewById(R.id.reglink);
                 register.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -80,11 +94,15 @@ public class Login extends AppCompatActivity {
                         startActivity(i);
                     }
                 });
-                //Toast toastname = new Toast(activity, "mesagee", length of toast);
-              //  Snackbar snackbarName = Snackbar.make(coordinatorlogin, "Mesage", Snackbar.LENGTH_INDEFINITE);
-               // snackbarName.show();
+
+
+
             }
         });
+
+        //Toast toastname = new Toast(activity, "mesagee", length of toast);
+        //  Snackbar snackbarName = Snackbar.make(coordinatorlogin, "Mesage", Snackbar.LENGTH_INDEFINITE);
+        // snackbarName.show();
     }
 
     private void loginuser(){
@@ -106,7 +124,16 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this,message,Toast.LENGTH_LONG).show();
                             if(message.equals("Success")){
                             Intent i = new Intent(Login.this, Home.class);
-                            startActivity(i);}
+
+                                //<shared preferences>
+                                SharedPreferences.Editor editor = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE).edit();
+                                editor.putString("Username", username);
+                                editor.putString("Password",password);
+                               // editor.putBoolean("Remember",true);
+                                editor.commit();
+
+                                startActivity(i);
+                            }
 
                         }
                         catch (JSONException e){
@@ -132,6 +159,7 @@ public class Login extends AppCompatActivity {
             }
 
         };
+
 
 
         requestQueue.add(stringRequest);

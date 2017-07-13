@@ -69,54 +69,57 @@ public class Register extends AppCompatActivity {
 
     }
 
-    private void registeruser() {
-        RequestQueue regrequest = Volley.newRequestQueue(this);
-        final String requsername = username.getText().toString().trim(); //Trim fuction learn
-        final String reqpassword = password.getText().toString().trim();
-        final String reqemail = emailid.getText().toString().trim();
 
-        String REGISTER_URL = "http://bootcampgoa.com/wp-admin/admin-ajax.php";
-        StringRequest reqstring = new StringRequest(Request.Method.POST, REGISTER_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                JSONObject resp = null;
-                try {
-                    resp = new JSONObject(response);
-                    String message = resp.getString("message");
-                    int status = resp.getInt("status");
-                    Toast.makeText(Register.this, message, Toast.LENGTH_LONG).show();
-                    if (message.equals("Success")) {
-                        Intent i = new Intent(Register.this, Home.class);
-                        startActivity(i);
+
+
+    private void registeruser() {
+            RequestQueue regrequest = Volley.newRequestQueue(this);
+            final String requsername = username.getText().toString().trim(); //Trim fuction learn
+            final String reqpassword = password.getText().toString().trim();
+            final String reqemail = emailid.getText().toString().trim();
+
+            String REGISTER_URL = "http://bootcampgoa.com/wp-admin/admin-ajax.php";
+            StringRequest reqstring = new StringRequest(Request.Method.POST, REGISTER_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    JSONObject resp = null;
+                    try {
+                        resp = new JSONObject(response);
+                        String message = resp.getString("message");
+                        int status = resp.getInt("status");
+                        Toast.makeText(Register.this, message, Toast.LENGTH_LONG).show();
+                        if (message.equals("Success")) {
+                            Intent i = new Intent(Register.this, Home.class);
+                            startActivity(i);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(Register.this, error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("action", "register_user");
+                    params.put("username", requsername);
+                    params.put("password", reqpassword);
+                    params.put("user_email", reqemail);
+                    return params;
                 }
 
 
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Register.this, error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-
-                params.put("action", "register_user");
-                params.put("username", requsername);
-                params.put("password", reqpassword);
-                params.put("user_email", reqemail);
-                return params;
-            }
-
-
-        };
-        regrequest.add(reqstring);
-    }
+            };
+            regrequest.add(reqstring);
+        }
 }
 
