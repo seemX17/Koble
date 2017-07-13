@@ -39,9 +39,9 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);  //To learn
-        setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_login);//to learn
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);//to learn
+        setSupportActionBar(toolbar);//to learn
         customFont = Typeface.createFromAsset(getAssets(), "fonts/montserrat.otf");
         loginBtn = (Button) findViewById(R.id.loginBtn);
         loginBtn.setTypeface(customFont);
@@ -92,9 +92,8 @@ public class Login extends AppCompatActivity {
         final String username = Username.getText().toString().trim();
         final String password = Password.getText().toString().trim();
 
-        String REGISTER_URL ="http://bootcampgoa.com/wp-admin/admin-ajax.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
-                new Response.Listener<String>() {
+        String LOGIN_URL ="http://bootcampgoa.com/wp-admin/admin-ajax.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
