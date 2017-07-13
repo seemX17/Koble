@@ -92,7 +92,7 @@
                         android:text="Signup"
                         android:id="@+id/reglink"
                         android:inputType="text"
-                        android:textColor="@color/textColor"/>
+                        android:textColor="@color/colorPrimaryDark"/>
 
                 </LinearLayout>
 
