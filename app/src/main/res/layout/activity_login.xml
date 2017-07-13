@@ -87,9 +87,10 @@
                         />
                 <!--reglink-->
                     <TextView
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Signup"
+                        android:text="Don't Have an Account? SignUp"
                         android:id="@+id/reglink"
                         android:inputType="text"
                         android:textColor="@color/colorPrimaryDark"/>

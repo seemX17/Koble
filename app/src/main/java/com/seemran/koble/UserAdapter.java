@@ -60,7 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         holder.time.setText(user.getTime());
         holder.time.setTypeface(Login.customFont);
 
-        Log.d("Operations", user.getImage());
+        Log.d("Operations", user.getName());
         holder.image.setBackgroundColor(Color.rgb(100, 100, 50));
         Picasso.with(context).load(user.getImage()).into(holder.image);
 

@@ -54,6 +54,10 @@ public class Login extends AppCompatActivity {
         Password.setTypeface(customFont);
 
 
+        register = (TextView)findViewById(R.id.reglink);
+        register.setTypeface(customFont);
+
+
         SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         String restoredText = prefs.getString("Username", null);
         if (restoredText != null) {
@@ -84,19 +88,13 @@ public class Login extends AppCompatActivity {
                 } else{
                    loginuser();
                 }
-
-                //<register link>
-            register = (TextView)findViewById(R.id.reglink);
-                register.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent i = new Intent(Login.this,Register.class);
-                        startActivity(i);
-                    }
-                });
-
-
-
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Login.this,Register.class);
+                startActivity(i);
             }
         });
 

@@ -38,38 +38,43 @@ public class RecentFragment extends Fragment {
     }
     public void createUsers(){
         User user = new User();
-
-
         user.name = "Aditya Bhosle";
         user.message = "WonderWoman";
         user.time = "16:41";
         user.image = "https://s-media-cache-ak0.pinimg.com/736x/d0/61/de/d061de87c4ae9016f3f4b13c6e0766d8--hamza-retro-illustration.jpg";
         users.add(user);
+        user = new User();
         user.name = "Jude Silveira";
         user.message = "Photographer";
         user.time = "21:16";
         user.image = "https://s-media-cache-ak0.pinimg.com/originals/2a/bc/e5/2abce5b2f8cd52849d1098a9ac8da057.png";
         users.add(user);
+        user = new User();
         user.name = "Shubham Modi";
         user.message = "Spiderman";
         user.time = "11:30";
         user.image = "https://s-media-cache-ak0.pinimg.com/originals/35/20/13/352013cd60bf82b0eb538ba3ef876d6e.jpg";
         users.add(user);
+        user = new User();
         user.name = "Amrit Almeida";
-        user.message = "Superman";
+        user.message = "I am Lord, Bless you!";
         user.time = "07:18";
         user.image = "https://s-media-cache-ak0.pinimg.com/originals/87/6b/a3/876ba342d0098c78f67ef0aaff45f02d.png";
-       users.add(user);
+        users.add(user);
+        user = new User();
         user.name = "Edrick";
         user.message = "hey";
         user.time="01.17";
         user.image = "https://pbs.twimg.com/profile_images/482948029129838592/WwzZK2aI_400x400.jpeg";
         users.add(user);
+        user = new User();
         user.name = "Cedric periera";
         user.message ="Tommorw i have to go to church";
         user.time = "02.45";
         user.image ="https://s-media-cache-ak0.pinimg.com/236x/ed/11/2d/ed112db5d8dc69ac75f4139ed31efec6.jpg";
         users.add(user);
+        user = new User();
+
         user.name ="Adrain almeida";
         user.message = "Superhooman";
         user.time ="yesterday";
