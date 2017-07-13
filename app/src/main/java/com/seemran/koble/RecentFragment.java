@@ -39,19 +39,19 @@ public class RecentFragment extends Fragment {
     public void createUsers(){
         User user = new User();
         user.name = "Aditya Bhosle";
-        user.message = "WonderWoman";
+        user.message = "I am WonderWoman.";
         user.time = "16:41";
         user.image = "https://s-media-cache-ak0.pinimg.com/736x/d0/61/de/d061de87c4ae9016f3f4b13c6e0766d8--hamza-retro-illustration.jpg";
         users.add(user);
         user = new User();
         user.name = "Jude Silveira";
-        user.message = "Photographer";
+        user.message = " Contact me for Photography.";
         user.time = "21:16";
         user.image = "https://s-media-cache-ak0.pinimg.com/originals/2a/bc/e5/2abce5b2f8cd52849d1098a9ac8da057.png";
         users.add(user);
         user = new User();
         user.name = "Shubham Modi";
-        user.message = "Spiderman";
+        user.message = "Woah! There the Spiderman!";
         user.time = "11:30";
         user.image = "https://s-media-cache-ak0.pinimg.com/originals/35/20/13/352013cd60bf82b0eb538ba3ef876d6e.jpg";
         users.add(user);
@@ -69,7 +69,7 @@ public class RecentFragment extends Fragment {
         users.add(user);
         user = new User();
         user.name = "Cedric periera";
-        user.message ="Tommorw i have to go to church";
+        user.message ="Tommorw i have to go to church.";
         user.time = "02.45";
         user.image ="https://s-media-cache-ak0.pinimg.com/236x/ed/11/2d/ed112db5d8dc69ac75f4139ed31efec6.jpg";
         users.add(user);
