@@ -1,9 +1,11 @@
 package com.seemran.koble;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -28,6 +30,7 @@ public class Home extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public FloatingActionButton fab;
+    final int RequestPermissionCode = 1;
 
     private int[] tabIcons = {
             R.drawable.ic_recent,
@@ -40,7 +43,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {//teach me this oncreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        EnableRuntimePermission();
         viewPager = (ViewPager) findViewById(R.id.viewpager); // we get the viewpager from activity
         setupViewPager(viewPager); // set this activity to support viewpager
 
@@ -48,15 +51,18 @@ public class Home extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager); // Connect viewpage to tablayout
         setupTabIcons(); // function
 
+
+
+
         //<----FLOATING ACTION BUTTON---->
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this, NewMessageActivity.class);
-                startActivity(intent);
-            }
-        });
+//        fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Home.this, NewMessageActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void setupTabIcons() {
@@ -71,8 +77,8 @@ public class Home extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager()); // This is hosekeeping android stuff
         adapter.addFrag(new RecentFragment());
         adapter.addFrag(new CallFragment());
-        adapter.addFrag(new MenuFragment());
         adapter.addFrag(new ContactsFragment());
+        adapter.addFrag(new MenuFragment());
         adapter.addFrag(new SettingsFragment());
         viewPager.setAdapter(adapter);
     }
@@ -102,5 +108,14 @@ public class Home extends AppCompatActivity {
         }
 
 
+    }
+    public void EnableRuntimePermission(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                Home.this,
+                Manifest.permission.READ_CONTACTS)) {
+        } else {
+            ActivityCompat.requestPermissions(Home.this, new String[]{
+                    Manifest.permission.READ_CONTACTS}, RequestPermissionCode);
+        }
     }
 }

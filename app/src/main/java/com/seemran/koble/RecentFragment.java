@@ -21,9 +21,13 @@ public class RecentFragment extends Fragment {
     UserAdapter mAdapter;
     ArrayList<User> users;
     Context ctx;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recent, container, false);
+        // THis is same as set content view. But for fragment. Fragment as I had explained earlier is like a window
+        // It takes a layout and puts it in that window.
+        // So, that is called inflating. It took the recentfrag layout and fit it in the window. GOt it? yes
         ctx = getActivity();
         users = new ArrayList<>();
         createUsers();
