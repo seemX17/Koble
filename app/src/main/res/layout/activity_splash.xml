@@ -10,12 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@color/colorAccent">
+        android:background="@color/colortab"
+        android:orientation="vertical"
+        android:weightSum="1">
         <ImageView
             android:layout_width="300dp"
-            android:layout_height="500dp"
+            android:layout_height="163dp"
             android:src="@drawable/logo"
-            />
+            android:layout_gravity="top|center"
+            android:layout_weight="0.13" />
+       <ImageView
+           android:layout_width="150dp"
+           android:layout_height="60dp"
+           android:src="@drawable/koble"/>
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

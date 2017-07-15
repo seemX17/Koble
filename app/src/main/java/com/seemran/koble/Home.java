@@ -1,6 +1,8 @@
 package com.seemran.koble;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,18 +15,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class Home extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    public FloatingActionButton fab;
+
     private int[] tabIcons = {
             R.drawable.ic_recent,
             R.drawable.ic_call,
-            R.drawable.ic_conference,
+            R.drawable.ic_menu,
             R.drawable.ic_profile,
             R.drawable.ic_settings
     }; // This is an array of images
@@ -39,6 +47,16 @@ public class Home extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager); // Connect viewpage to tablayout
         setupTabIcons(); // function
+
+        //<----FLOATING ACTION BUTTON---->
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, NewMessageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupTabIcons() {
@@ -80,9 +98,8 @@ public class Home extends AppCompatActivity {
 
         public void addFrag(Fragment fragment) { // This function is adding data to the two lists
             mFragmentList.add(fragment); // Fragment added to fraglist
-           // mFragmentTitleList.add(title); // frag title added to fragtitle list
+            // mFragmentTitleList.add(title); // frag title added to fragtitle list
         }
-
 
 
     }

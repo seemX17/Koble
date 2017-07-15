@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
         register = (TextView)findViewById(R.id.reglink);
         register.setTypeface(customFont);
 
-
+        //<-----SHARED PREFERENCES---->
         SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         String restoredText = prefs.getString("Username", null);
         if (restoredText != null) {
@@ -75,6 +75,8 @@ public class Login extends AppCompatActivity {
    // @Override
     //protected void onStart() {
     //    super.onStart();
+
+        //<------VALIDATION---->
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,10 +88,14 @@ public class Login extends AppCompatActivity {
                 if (text.equals("") || passwordText.equals("")){
                     Toast.makeText(Login.this, "Please check your username and password!", Toast.LENGTH_SHORT).show();
                 } else{
-                   loginuser();
+                  // loginuser();
+                    Intent i = new Intent(Login.this,Home.class);
+                    startActivity(i);
                 }
             }
         });
+
+        //<-----REGISTER LINK---->
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,64 +109,64 @@ public class Login extends AppCompatActivity {
         // snackbarName.show();
     }
 
-    private void loginuser(){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        final String username = Username.getText().toString().trim();
-        final String password = Password.getText().toString().trim();
-
-        String LOGIN_URL ="http://bootcampgoa.com/wp-admin/admin-ajax.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-
-                        JSONObject resp = null;
-                        try{
-                            resp =new JSONObject(response);
-                            String message=resp.getString("message");
-                            int status=resp.getInt("status");
-                            Toast.makeText(Login.this,message,Toast.LENGTH_LONG).show();
-                            if(message.equals("Success")){
-                            Intent i = new Intent(Login.this, Home.class);
-
-                                //<shared preferences>
-                                SharedPreferences.Editor editor = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE).edit();
-                                editor.putString("Username", username);
-                                editor.putString("Password",password);
-                               // editor.putBoolean("Remember",true);
-                                editor.commit();
-
-                                startActivity(i);
-                            }
-
-                        }
-                        catch (JSONException e){
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Login.this,error.toString(),Toast.LENGTH_LONG).show();
-                    }
-                }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-
-                params.put("action","check_user");
-                params.put("username",username);
-                params.put("password", password);
-                return params;
-            }
-
-        };
-
-
-
-        requestQueue.add(stringRequest);
-    }
-}
+//    private void loginuser(){
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        final String username = Username.getText().toString().trim();
+//        final String password = Password.getText().toString().trim();
+//
+//        String LOGIN_URL ="http://bootcampgoa.com/wp-admin/admin-ajax.php";
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//
+//                        JSONObject resp = null;
+//                        try{
+//                            resp =new JSONObject(response);
+//                            String message=resp.getString("message");
+//                            int status=resp.getInt("status");
+//                            Toast.makeText(Login.this,message,Toast.LENGTH_LONG).show();
+//                            if(message.equals("Success")){
+//                            Intent i = new Intent(Login.this, Home.class);
+//
+//                                //<shared preferences>
+//                                SharedPreferences.Editor editor = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE).edit();
+//                                editor.putString("Username", username);
+//                                editor.putString("Password",password);
+//                               // editor.putBoolean("Remember",true);
+//                                editor.commit();
+//
+//                                startActivity(i);
+//                            }
+//
+//                        }
+//                        catch (JSONException e){
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(Login.this,error.toString(),Toast.LENGTH_LONG).show();
+//                    }
+//                }){
+//            @Override
+//            protected Map<String,String> getParams(){
+//                Map<String,String> params = new HashMap<String, String>();
+//
+//                params.put("action","check_user");
+//                params.put("username",username);
+//                params.put("password", password);
+//                return params;
+//        }
+//
+//        };
+//
+//
+//
+//        requestQueue.add(stringRequest);
+//        }
+        }
 

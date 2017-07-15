@@ -24,13 +24,13 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
     </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_profile"
-        android:backgroundTint="@color/colortab"
-        app:layout_anchor="@id/linearMain"
-        app:layout_anchorGravity="bottom|right"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_floatbutton" />
 </android.support.design.widget.CoordinatorLayout>
