@@ -1,10 +1,184 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.seemran.koble.SettingsFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/userdefault"/>
 
-    <!-- TODO: Update blank fragment layout -->
+     <TextView
+      android:layout_width="154dp"
+      android:layout_height="30dp"
+      android:layout_gravity="center_horizontal"
+      android:textStyle="bold"
+         android:gravity="center"
+      android:text="John Miller"
+      android:layout_marginTop="10dp"
+      android:paddingBottom="7dp"
+         android:textSize="20dp"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:text="location"
+          android:id="@+id/UserLocation"
+          android:gravity="center"/>
 
+        <!--Followers tab-->
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layout_marginTop="10dp"
+          android:gravity="center"
+          android:background="@color/colortab"
+          >
+
+             <!--photos-->
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  android:padding="30dp">
+              <TextView
+                  android:id="@+id/Photos"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="1.2K"
+                  android:layout_weight="0.72"
+                  android:layout_margin="5dp"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="PHOTOS"
+                 android:textStyle="bold"/>
+              </LinearLayout>
+
+              <!--friends-->
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  android:padding="30dp">
+                  <TextView
+                      android:id="@+id/friends"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="293"
+                      android:layout_weight="0.72"
+                      android:layout_margin="5dp"/>
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="FRIENDS"
+                  android:textStyle="bold"/>
+              </LinearLayout>
+          <!--videos-->
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:padding="30dp">
+
+              <TextView
+                  android:id="@+id/videos"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="57"
+                  android:layout_weight="0.72"
+                  android:layout_margin="5dp"/>
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="VIDEOS"
+                  android:textStyle="bold"/>
+          </LinearLayout>
+
+      </LinearLayout>
+
+    <!--Username-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colortab"
+        android:layout_marginTop="20dp">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="3dp"
+                android:src="@drawable/userdefault"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                     android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="John Miller"
+                    />
+            </LinearLayout>
+
+    </LinearLayout>
+
+    <!--Phonenumber-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:background="@color/colortab"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="3dp"
+            android:src="@drawable/ic_callcolor"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+09 0000000"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
