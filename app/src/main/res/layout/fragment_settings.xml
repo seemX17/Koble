@@ -28,7 +28,8 @@
       android:text="John Miller"
       android:layout_marginTop="10dp"
       android:paddingBottom="7dp"
-         android:textSize="20dp"/>
+         android:textSize="20dp"
+         android:id="@+id/username"/>
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

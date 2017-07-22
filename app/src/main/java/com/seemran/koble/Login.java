@@ -69,14 +69,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener,  G
         coordinatorlogin = (CoordinatorLayout) findViewById(R.id.coordinatorLogin);
         email = (TextView) findViewById(R.id.input_email);
         email.setTypeface(customFont);
-     name = (TextView) findViewById(R.id.input_name);
+        name = (TextView) findViewById(R.id.input_name);
         name.setTypeface(customFont);
-        profile_section=(LinearLayout)findViewById((R.id.profile_section));
-        sign_in_button=(SignInButton)findViewById(R.id.sign_in_button);
-        profilepic=(ImageView)findViewById(R.id.profile_pic);
-        sign_in_button.setOnClickListener(this);
-       register = (TextView)findViewById(R.id.reglink);
+        register = (TextView)findViewById(R.id.reglink);
         register.setTypeface(customFont);
+         profile_section=(LinearLayout)findViewById((R.id.profile_section));
+        sign_in_button=(SignInButton)findViewById(R.id.sign_in_button);
+         profilepic=(ImageView)findViewById(R.id.profile_pic);
+
 
         loginbtn.setOnClickListener(this);
         sign_in_button.setOnClickListener(this);
