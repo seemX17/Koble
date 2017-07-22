@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "119212910883",
+    "project_id": "koblecontacts"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119212910883:android:d55e43f7be8688d4",
+        "android_client_info": {
+          "package_name": "com.seemran.koble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119212910883-foiitk067nruo0599e2jldmpj7ev6h8g.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "119212910883-uod2pfkalhs9s8te7ocldnr0db4j7hoh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seemran.koble",
+            "certificate_hash": "3c7c7d142abd20d8173cb4847cad009867ab3d77"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0S1RsnwLPRDMVgQNEp_SWayb2v5YCOQw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
