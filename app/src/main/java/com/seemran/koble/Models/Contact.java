@@ -1,11 +1,11 @@
-package com.seemran.koble;
+package com.seemran.koble.Models;
 
 /**
  * Created by Seemran on 7/15/2017.
  */
 
 public class Contact {
-    String number,name;
+ public   String number,name;
 
 
 

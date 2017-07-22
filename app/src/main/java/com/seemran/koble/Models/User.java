@@ -1,23 +1,18 @@
-package com.seemran.koble;
+package com.seemran.koble.Models;
 
 /**
  * Created by Seemran on 7/11/2017.
  */
 
 public class User {
-    // Now in the screenshot you saw there are four things per row
-    // We will create each thing now.
-    // There were 3 strings
-    String name,message,time;
-    String  image;
+    // Now in the screenshot  there are four things per row
+   // There were 3 strings
+    public String name,message,time,image;
 
-    public User() {
+    public User() {  //constructor
     }
-
-    public String getName() {
-
-        return name;
-    }
+//getter and setter
+    public String getName() {  return name;  }
 
     public void setName(String name) {
         this.name = name;

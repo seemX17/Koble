@@ -1,18 +1,17 @@
-package com.seemran.koble;
-
-
+package com.seemran.koble.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.seemran.koble.R;
+import com.seemran.koble.Models.User;
+import com.seemran.koble.Adapter.UserAdapter;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class RecentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recent, container, false);
-        // THis is same as set content view. But for fragment. Fragment as I had explained earlier is like a window
+        // THis is same as set content view. But for fragment. Fragment  is like a window
         // It takes a layout and puts it in that window.
         // So, that is called inflating. It took the recentfrag layout and fit it in the window. GOt it? yes
         ctx = getActivity();

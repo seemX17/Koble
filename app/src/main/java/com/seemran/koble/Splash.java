@@ -13,7 +13,7 @@ public class Splash extends AppCompatActivity {
 
     //global vars go here
 
-    private int SPLASH_LENGTH = 3000; //This is the time in milliseconds for splash screen. Now make it 3 sec
+    private int SPLASH_LENGTH = 3000; //This is the time in milliseconds for splash screen.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

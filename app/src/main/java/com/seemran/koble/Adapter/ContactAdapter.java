@@ -1,4 +1,4 @@
-package com.seemran.koble;
+package com.seemran.koble.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.seemran.koble.Models.Contact;
+import com.seemran.koble.Login;
+import com.seemran.koble.R;
 
 import java.util.ArrayList;
 
@@ -19,11 +23,13 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
 {
     ArrayList<Contact> namecontact;
     Context ctx;
+
     public ContactAdapter(ArrayList<Contact> namecontact, Context context )
     {
         this.ctx = context;
         this.namecontact=namecontact;
     }
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public TextView namecontact;

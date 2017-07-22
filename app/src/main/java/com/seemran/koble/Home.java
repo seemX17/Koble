@@ -1,8 +1,6 @@
 package com.seemran.koble;
 
 import android.Manifest;
-import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -12,13 +10,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+
+import com.seemran.koble.Fragments.CallFragment;
+import com.seemran.koble.Fragments.ContactsFragmentNew;
+import com.seemran.koble.Fragments.Groupfragment;
+import com.seemran.koble.Fragments.RecentFragment;
+import com.seemran.koble.Fragments.SettingsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +37,7 @@ public class Home extends AppCompatActivity {
             R.drawable.ic_settings
     }; // This is an array of images
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//teach me this oncreate
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         EnableRuntimePermission();
@@ -66,8 +63,8 @@ public class Home extends AppCompatActivity {
     }
 
     private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]); // Pretty self explanatory
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]); // why 3 tabs? Done?yes :P
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
         tabLayout.getTabAt(4).setIcon(tabIcons[4]);
@@ -77,8 +74,8 @@ public class Home extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager()); // This is hosekeeping android stuff
         adapter.addFrag(new RecentFragment());
         adapter.addFrag(new CallFragment());
-        adapter.addFrag(new ContactsFragment());
-        adapter.addFrag(new MenuFragment());
+        adapter.addFrag(new ContactsFragmentNew());
+        adapter.addFrag(new Groupfragment());
         adapter.addFrag(new SettingsFragment());
         viewPager.setAdapter(adapter);
     }

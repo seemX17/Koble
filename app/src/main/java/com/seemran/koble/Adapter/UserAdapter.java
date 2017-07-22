@@ -1,8 +1,6 @@
-package com.seemran.koble;
+package com.seemran.koble.Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.seemran.koble.Login;
+import com.seemran.koble.R;
+import com.seemran.koble.Models.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,8 +45,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.contact_row, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()) .inflate(R.layout.contact_row, parent, false);
 
         return new MyViewHolder(itemView);
     }
