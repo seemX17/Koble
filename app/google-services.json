@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "931811974940-ad0c9q0eum67s62mt1dvbf0j8g11c37a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seemran.koble",
+            "certificate_hash": "51e50b1ccd7ed2a635cb38c2e7476a60e18447d0"
+          }
+        },
+        {
           "client_id": "931811974940-bj9mj263nn9idhhps65mmt95spbrda33.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931811974940-bj9mj263nn9idhhps65mmt95spbrda33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
