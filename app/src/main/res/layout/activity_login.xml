@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.seemran.koble.Login"
+    tools:context="com.seemran.koble.Activity.LoginActivity"
     android:id="@+id/coordinatorLogin">
 
     <!--toolbar-->
@@ -27,11 +27,13 @@
                 <TextView
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/toolbar_title"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="KOBLE - LOGIN"/>
+
+
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -114,12 +116,19 @@
                         android:textColor="@color/colorPrimaryDark"/>
 
                 </LinearLayout>
-
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
             </android.support.v7.widget.CardView>
 
 
         </LinearLayout>
 
+
     </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>
