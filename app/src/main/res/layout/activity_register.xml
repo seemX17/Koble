@@ -50,18 +50,30 @@
                   android:orientation="vertical"
                   android:layout_margin="10dp">
 
+                  <!--<android.support.design.widget.TextInputLayout-->
+                      <!--android:layout_width="match_parent"-->
+                      <!--android:layout_height="wrap_content"-->
+                      <!--android:id="@+id/layout_username">-->
+
+                      <!--<EditText-->
+                          <!--android:layout_width="match_parent"-->
+                          <!--android:layout_height="wrap_content"-->
+                          <!--android:id="@+id/regusername"-->
+                          <!--android:hint="username"-->
+                          <!--android:inputType="text"/>-->
+                   <!--</android.support.design.widget.TextInputLayout>-->
+
                   <android.support.design.widget.TextInputLayout
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:id="@+id/layout_username">
-
+                      android:id="@+id/layout_email">
                       <EditText
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:id="@+id/regusername"
-                          android:hint="username"
-                          android:inputType="text"/>
-                   </android.support.design.widget.TextInputLayout>
+                          android:inputType="textEmailAddress"
+                          android:hint="Email id"
+                          android:id="@+id/regemail"/>
+                  </android.support.design.widget.TextInputLayout>
 
                   <android.support.design.widget.TextInputLayout
                       android:layout_width="match_parent"
@@ -75,17 +87,6 @@
                           android:id="@+id/regpassword"/>
                   </android.support.design.widget.TextInputLayout>
 
-                  <android.support.design.widget.TextInputLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/layout_email">
-                      <EditText
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:inputType="textEmailAddress"
-                          android:hint="Email id"
-                          android:id="@+id/regemail"/>
-                  </android.support.design.widget.TextInputLayout>
 
                   <Button
                       android:layout_margin="5dp"
