@@ -1,9 +1,8 @@
-package com.seemran.koble;
+package com.seemran.koble.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,25 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.seemran.koble.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     public Button RegBtn;
     public CoordinatorLayout coordinatorsignup;
@@ -41,12 +29,13 @@ public class Register extends AppCompatActivity {
     public Typeface customFont;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Activity ctx;
+    private  Activity ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         mAuth = FirebaseAuth.getInstance();
 
         Toolbar regtool = (Toolbar) findViewById(R.id.regtoolbar);
@@ -83,8 +72,8 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                        .addOnCompleteListener(ctx, new OnCompleteListener<AuthResult>() {
+
+                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()) .addOnCompleteListener(ctx, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Log.d("Operations", "createUserWithEmail:onComplete:" + task.isSuccessful());
@@ -98,7 +87,7 @@ public class Register extends AppCompatActivity {
                                 }
                                 else
                                 {
-                                    Intent i = new Intent(Register.this,Home.class);
+                                    Intent i = new Intent(RegisterActivity.this,HomeActitvity.class);
                                     startActivity(i);
 
                                 }
@@ -107,23 +96,24 @@ public class Register extends AppCompatActivity {
             }
         });
 
-
-        RegBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String textname, emailtext, passwordtext;
-                emailtext = email.getText().toString();
-                passwordtext = password.getText().toString();
-
-                if ( emailtext.equals("") || passwordtext.equals("")) {
-                    Toast.makeText(Register.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent i = new Intent(Register.this, Home.class);
-//                            startActivity(i);;
-                }
-            }
-
-        });
+//
+//        RegBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String  emailtext, passwordtext;
+//                emailtext = email.getText().toString();
+//                passwordtext = password.getText().toString();
+//
+//                if ( emailtext.equals("") || passwordtext.equals("")) {
+//                    Toast.makeText(RegisterActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+//              }
+//              //else {
+///                  Intent i = new Intent(RegisterActivity.this, HomeActitvity.class);
+//                          startActivity(i);;
+//                }
+//            }
+//
+//        });
     }
     @Override
     public void onStart() {
@@ -157,9 +147,9 @@ public class Register extends AppCompatActivity {
 //                        resp = new JSONObject(response);
 //                        String message = resp.getString("message");
 //                        int status = resp.getInt("status");
-//                        Toast.makeText(Register.this, message, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
 //                        if (message.equals("User Exists")) {
-//                            Intent i = new Intent(Register.this, Home.class);
+//                            Intent i = new Intent(RegisterActivity.this, HomeActitvity.class);
 //                            startActivity(i);
 //                        }
 //
@@ -173,7 +163,7 @@ public class Register extends AppCompatActivity {
 //                    new Response.ErrorListener() {
 //                        @Override
 //                        public void onErrorResponse(VolleyError error) {
-//                            Toast.makeText(Register.this, error.toString(), Toast.LENGTH_LONG).show();
+//                            Toast.makeText(RegisterActivity.this, error.toString(), Toast.LENGTH_LONG).show();
 //                        }
 //                    }) {
 //                @Override
