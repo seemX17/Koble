@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.seemran.koble.Models.Contact;
-import com.seemran.koble.Login;
+import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
         Contact contact = new Contact();
         contact = namecontact.get(position);
         holder.namecontact.setText(contact.getName());
-        holder.namecontact.setTypeface(Login.customFont);
+        holder.namecontact.setTypeface(LoginActivity.customFont);
     }
 
     @Override

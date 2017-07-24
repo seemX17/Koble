@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.Models.GroupCard;
-import com.seemran.koble.Login;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
@@ -52,11 +52,11 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
         GroupCard grp = new GroupCard();
         grp =groupcard .get(position);
         holder.name.setText(grp.getName());
-        holder.name.setTypeface(Login.customFont);
+        holder.name.setTypeface(LoginActivity.customFont);
         holder.time.setText(grp.getTime());
-        holder.time.setTypeface(Login.customFont);
+        holder.time.setTypeface(LoginActivity.customFont);
         holder.grpmembers.setText(grp.getGrpmembers());
-        holder.grpmembers.setTypeface(Login.customFont);
+        holder.grpmembers.setTypeface(LoginActivity.customFont);
 
         Glide.with(ctx).load(grp.getGrpimage()).into(holder.grpimage);
     }

@@ -19,10 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Home" />
-        <activity android:name=".Register" />
-        <activity android:name=".Signin"></activity>
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.HomeActitvity" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Extras.Signin"></activity>
     </application>
 
 </manifest>

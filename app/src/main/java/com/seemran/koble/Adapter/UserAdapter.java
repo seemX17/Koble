@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.seemran.koble.Login;
+import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.R;
 import com.seemran.koble.Models.User;
 import com.squareup.picasso.Picasso;
@@ -54,11 +54,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         User user = users.get(position);
         holder.name.setText(user.getName());
-        holder.name.setTypeface(Login.customFont);
+        holder.name.setTypeface(LoginActivity.customFont);
         holder.msg.setText(user.getMessage());
-        holder.msg.setTypeface(Login.customFont);
+        holder.msg.setTypeface(LoginActivity.customFont);
         holder.time.setText(user.getTime());
-        holder.time.setTypeface(Login.customFont);
+        holder.time.setTypeface(LoginActivity.customFont);
 
         Log.d("Operations", user.getName());
         Picasso.with(context).load(user.getImage()).into(holder.image);

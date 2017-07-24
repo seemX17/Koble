@@ -1,4 +1,4 @@
-package com.seemran.koble;
+package com.seemran.koble.Activity;
 
 import android.Manifest;
 import android.support.design.widget.FloatingActionButton;
@@ -11,11 +11,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.seemran.koble.Extras.ContactsFragment;
 import com.seemran.koble.Fragments.CallFragment;
-import com.seemran.koble.Fragments.ContactsFragmentNew;
 import com.seemran.koble.Fragments.Groupfragment;
 import com.seemran.koble.Fragments.RecentFragment;
 import com.seemran.koble.Fragments.SettingsFragment;
+import com.seemran.koble.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 
 
 
-public class Home extends AppCompatActivity {
+public class HomeActitvity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public FloatingActionButton fab;
@@ -36,6 +37,7 @@ public class Home extends AppCompatActivity {
             R.drawable.ic_profile,
             R.drawable.ic_settings
     }; // This is an array of images
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,7 @@ public class Home extends AppCompatActivity {
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(Home.this, NewMessageActivity.class);
+//                Intent intent = new Intent(HomeActitvity.this, NewMessageActivity.class);
 //                startActivity(intent);
 //            }
 //        });
@@ -74,7 +76,7 @@ public class Home extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager()); // This is hosekeeping android stuff
         adapter.addFrag(new RecentFragment());
         adapter.addFrag(new CallFragment());
-        adapter.addFrag(new ContactsFragmentNew());
+        adapter.addFrag(new ContactsFragment());
         adapter.addFrag(new Groupfragment());
         adapter.addFrag(new SettingsFragment());
         viewPager.setAdapter(adapter);
@@ -108,10 +110,10 @@ public class Home extends AppCompatActivity {
     }
     public void EnableRuntimePermission(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(
-                Home.this,
+                HomeActitvity.this,
                 Manifest.permission.READ_CONTACTS)) {
         } else {
-            ActivityCompat.requestPermissions(Home.this, new String[]{
+            ActivityCompat.requestPermissions(HomeActitvity.this, new String[]{
                     Manifest.permission.READ_CONTACTS}, RequestPermissionCode);
         }
     }

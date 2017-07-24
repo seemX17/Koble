@@ -1,13 +1,14 @@
 package com.seemran.koble;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.seemran.koble.Activity.LoginActivity;
 
 public class Splash extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Splash.this, Signin.class);
+                Intent i = new Intent(Splash.this, LoginActivity.class);
                 startActivity(i);
                 finish();
             }

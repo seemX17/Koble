@@ -1,7 +1,6 @@
-package com.seemran.koble;
+package com.seemran.koble.Extras;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,8 +26,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import static android.R.attr.name;
+import com.seemran.koble.Activity.HomeActitvity;
+import com.seemran.koble.Activity.RegisterActivity;
+import com.seemran.koble.R;
 
 public class Signin extends AppCompatActivity implements View.OnClickListener,  GoogleApiClient.OnConnectionFailedListener{
     private FirebaseAuth mAuth;
@@ -40,18 +37,19 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
     public TextView register;
     public Button signInBtn;
     public SignInButton sign_in_button;
-    public LinearLayout profile_section;
     public GoogleApiClient googleApiClient;
     public static final int REQ_CODE= 9001;
+    public Activity ctx;
 
-    Activity ctx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        ctx = this;
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         signInBtn = (Button) findViewById(R.id.signIn);
+        signInBtn.setOnClickListener(this);
         register=(TextView)findViewById(R.id.reglink);
         sign_in_button=(SignInButton)findViewById(R.id.sign_in_button);
         sign_in_button.setOnClickListener(this);
@@ -64,6 +62,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
 //        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
 //                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
 //                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -88,7 +87,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i = new Intent(Signin.this,Register.class);
+               Intent i = new Intent(Signin.this,RegisterActivity.class);
                 startActivity(i);
             }
         });
@@ -102,8 +101,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
 //        updateUI(currentUser);
     }
 
-    private void updateUI(FirebaseUser currentUser) {
-    }
+
 
     @Override
     public void onStop() {
@@ -121,10 +119,8 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                 SignInButton();
                 break;
             case R.id.signIn :
-                ctx = this;
-                signInBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+
+
                         mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
                                 .addOnCompleteListener(ctx, new OnCompleteListener<AuthResult>() {
                                     @Override
@@ -136,19 +132,19 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                                         // signed in user can be handled in the listener.
                                         if (!task.isSuccessful()) {
                                             Log.w("Operations", "signInWithEmail:failed", task.getException());
-                                            Toast.makeText(ctx, "Failed Login!",
-                                                    Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ctx, "Failed LoginActivity signin!", Toast.LENGTH_SHORT).show();
                                         }
                                         else
                                         {
-                                            Intent i = new Intent(Signin.this,Home.class);
+
+                                            Intent i = new Intent(Signin.this,HomeActitvity.class);
                                             startActivity(i);
                                         }
 
                                     }
                                 });
-                    }
-                });
+
+
 
                 break;
 
@@ -177,15 +173,15 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
-            } else {
+            }
+            else {
                 // Google Sign In failed, update UI appropriately
                 // ...
-                Toast.makeText(ctx, "Failed Login!",
+                Toast.makeText(ctx, "Failed  google LoginActivity!",
                         Toast.LENGTH_SHORT).show();
             }
         }
     }
-
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("operations", "firebaseAuthWithGoogle:" + acct.getId());
@@ -199,6 +195,8 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("operations", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(Signin.this, "Authentication successfull.",
+                                    Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -211,6 +209,9 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                         // ...
                     }
                 });
+    }
+
+    private void updateUI(FirebaseUser user) {
     }
 
 
