@@ -3,6 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="clientID">931811974940-5vn4na7acdf6l66stvopgmodreqipmo7.apps.googleusercontent.com</string>
+    <string name="clientSecret">sWSnIrnZIbwBXR1ht5H2EgIw</string>
 
 </resources>

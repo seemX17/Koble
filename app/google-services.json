@@ -15,16 +15,16 @@
       },
       "oauth_client": [
         {
-          "client_id": "931811974940-ad0c9q0eum67s62mt1dvbf0j8g11c37a.apps.googleusercontent.com",
+          "client_id": "931811974940-5vn4na7acdf6l66stvopgmodreqipmo7.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "931811974940-7qp6ukgdrd206usblmpujef1dam2pqk3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.seemran.koble",
-            "certificate_hash": "51e50b1ccd7ed2a635cb38c2e7476a60e18447d0"
+            "certificate_hash": "3c7c7d142abd20d8173cb4847cad009867ab3d77"
           }
-        },
-        {
-          "client_id": "931811974940-bj9mj263nn9idhhps65mmt95spbrda33.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "931811974940-bj9mj263nn9idhhps65mmt95spbrda33.apps.googleusercontent.com",
+              "client_id": "931811974940-5vn4na7acdf6l66stvopgmodreqipmo7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
