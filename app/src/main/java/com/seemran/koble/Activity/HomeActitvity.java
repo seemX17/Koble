@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.seemran.koble.ChatPubnub.Constants;
+import com.seemran.koble.ChatPubnub.MainActivity;
 import com.seemran.koble.Extras.PhonebookContacts.ContactsFragment;
 import com.seemran.koble.Fragments.CallFragment;
 import com.seemran.koble.Fragments.Groupfragment;
@@ -88,6 +89,13 @@ public class HomeActitvity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animateFAB();
+            }
+        });
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(HomeActitvity.this, MainActivity.class);
+                startActivity(i);
             }
         });
 

@@ -39,7 +39,7 @@
             <category android:name="your.package.name" />
         </intent-filter>
 
-        <activity android:name=".ChatPubnub.MainActivity"></activity>
+        <activity android:name=".ChatPubnub.Chat"></activity>
     </application>
 
 </manifest>

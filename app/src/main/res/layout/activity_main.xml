@@ -1,7 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustPan">
+    android:windowSoftInputMode="adjustPan"
+    tools:context="com.seemran.koble.ChatPubnub.MainActivity">
+
+
+
 
     <ListView
         android:id="@android:id/list"
@@ -14,22 +20,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_above="@+id/msg_box" />
-
-   <android.support.v7.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        android:layout_above="@+id/msg_box"
+       />
 
     <LinearLayout
         android:id="@+id/msg_box"
         style="@style/AppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        >
 
         <EditText
             android:id="@+id/message_et"
-            android:hint="send   message"
+            android:hint="send message"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -40,12 +44,14 @@
 
         <Button
             android:text="send"
-            android:layout_width="0dp"
+                        android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="sendMessage"/>
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>
