@@ -1,4 +1,4 @@
-package com.seemran.koble;
+package com.seemran.koble.Extras.GooglePeopleApi;
 
 import android.content.Context;
 
@@ -9,6 +9,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.people.v1.People;
+import com.seemran.koble.R;
 
 import java.io.IOException;
 
@@ -17,7 +18,7 @@ import java.io.IOException;
  */
 public class PeopleHelper {
 
-    private static final String APPLICATION_NAME = "Peoples App";
+    private static final String APPLICATION_NAME = "Koble";
 
 
     public static People setUp(Context context, String serverAuthCode) throws IOException {

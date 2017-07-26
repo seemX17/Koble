@@ -1,4 +1,4 @@
-package com.seemran.koble;
+package com.seemran.koble.Extras.GooglePeopleApi;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -35,12 +35,13 @@ import com.google.api.services.people.v1.model.ListConnectionsResponse;
 import com.google.api.services.people.v1.model.Name;
 import com.google.api.services.people.v1.model.Person;
 import com.google.api.services.people.v1.model.PhoneNumber;
+import com.seemran.koble.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, View.OnClickListener {
+public class ContactListActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, View.OnClickListener {
 
     private static final String TAG = "Operations";
 
@@ -60,7 +61,7 @@ public class Test extends AppCompatActivity implements GoogleApiClient.OnConnect
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_googlepeopleapi);
 
         signInButton = (SignInButton) findViewById(R.id.main_googlesigninbtn);
         signInButton.setOnClickListener(this);
@@ -187,7 +188,7 @@ public class Test extends AppCompatActivity implements GoogleApiClient.OnConnect
             List<String> nameList = new ArrayList<>();
 
             try {
-                People peopleService = PeopleHelper.setUp(Test.this, params[0]);
+                People peopleService = PeopleHelper.setUp(ContactListActivity.this, params[0]);
 
                 ListConnectionsResponse response = peopleService.people().connections()
                         .list("people/me")
@@ -197,6 +198,7 @@ public class Test extends AppCompatActivity implements GoogleApiClient.OnConnect
                         .execute();
                 List<Person> connections = response.getConnections();
 
+                if (connections.size()>0)
                 for (Person person : connections) {
                     if (!person.isEmpty()) {
                         List<Name> names = person.getNames();
@@ -236,7 +238,7 @@ public class Test extends AppCompatActivity implements GoogleApiClient.OnConnect
             recyclerView.setVisibility(View.VISIBLE);
 
             adapter = new PeopleAdapter(nameList);
-            recyclerView.setLayoutManager(new LinearLayoutManager(Test.this));
+            recyclerView.setLayoutManager(new LinearLayoutManager(ContactListActivity.this));
             recyclerView.setAdapter(adapter);
 
         }

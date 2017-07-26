@@ -1,4 +1,4 @@
-package com.seemran.koble;
+package com.seemran.koble.Extras.GooglePeopleApi;
 
 /**
  * Created by Seemran on 25-Jul-17.

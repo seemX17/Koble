@@ -30,7 +30,7 @@ import com.seemran.koble.Activity.HomeActitvity;
 import com.seemran.koble.Activity.RegisterActivity;
 import com.seemran.koble.R;
 
-public class Signin extends AppCompatActivity implements View.OnClickListener,  GoogleApiClient.OnConnectionFailedListener{
+public class SigninFirebase extends AppCompatActivity implements View.OnClickListener,  GoogleApiClient.OnConnectionFailedListener{
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     public EditText username, password;
@@ -44,7 +44,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_signinfirebase);
         ctx = this;
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
@@ -87,7 +87,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i = new Intent(Signin.this,RegisterActivity.class);
+               Intent i = new Intent(SigninFirebase.this,RegisterActivity.class);
                 startActivity(i);
             }
         });
@@ -132,12 +132,12 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                                         // signed in user can be handled in the listener.
                                         if (!task.isSuccessful()) {
                                             Log.w("Operations", "signInWithEmail:failed", task.getException());
-                                            Toast.makeText(ctx, "Failed LoginActivity signin!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ctx, "Failed GoogleLoginActivity signin!", Toast.LENGTH_SHORT).show();
                                         }
                                         else
                                         {
 
-                                            Intent i = new Intent(Signin.this,HomeActitvity.class);
+                                            Intent i = new Intent(SigninFirebase.this,HomeActitvity.class);
                                             startActivity(i);
                                         }
 
@@ -177,7 +177,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
             else {
                 // Google Sign In failed, update UI appropriately
                 // ...
-                Toast.makeText(ctx, "Failed  google LoginActivity!",
+                Toast.makeText(ctx, "Failed  google GoogleLoginActivity!",
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -195,13 +195,13 @@ public class Signin extends AppCompatActivity implements View.OnClickListener,  
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("operations", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Signin.this, "Authentication successfull.",
+                            Toast.makeText(SigninFirebase.this, "Authentication successfull.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("operations", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Signin.this, "Authentication failed.",
+                            Toast.makeText(SigninFirebase.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }

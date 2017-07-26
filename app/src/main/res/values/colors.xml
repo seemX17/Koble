@@ -5,4 +5,7 @@
     <color name="colorAccent">#000000</color>
     <color name="colortab">#ffffff</color>
     <color name="textColor">#ecf0f1</color>
+    <color name="colorFAB1">#2196F3</color>
+    <color name="colorFAB2">#E040FB</color>
+
 </resources>

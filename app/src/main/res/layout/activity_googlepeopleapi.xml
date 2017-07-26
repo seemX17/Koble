@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.seemran.koble.Test">
+    tools:context="com.seemran.koble.Extras.GooglePeopleApi.ContactListActivity">
 
     <LinearLayout
         android:id="@+id/frame_login"
@@ -12,15 +12,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:padding="32dp"
-            android:text="People API:\nAndroid Tutorial"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#9A9A9A" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="bottom"-->
+            <!--android:padding="32dp"-->
+            <!--android:text=""-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Display1"-->
+            <!--android:textColor="#9A9A9A" />-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:src="@drawable/logo"  />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:src="@drawable/koble"/>
+
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.seemran.koble.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -9,9 +10,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
@@ -21,21 +24,24 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.seemran.koble.ChatPubnub.Constants;
 import com.seemran.koble.R;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,  GoogleApiClient.OnConnectionFailedListener {
+import org.mortbay.jetty.security.Password;
+
+import static android.R.attr.name;
+import static com.seemran.koble.Extras.GoogleLoginActivity.MyPREFERENCES;
+import static com.seemran.koble.R.id.sign_in_button;
+
+public class LoginActivity extends AppCompatActivity{
 
     public Button loginbtn;
     public CoordinatorLayout coordinatorlogin;
-    public TextView email,name;
+    public EditText username,password;
     public static Typeface customFont;
     public TextView register;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public SignInButton sign_in_button;
-    public LinearLayout profile_section;
-    public GoogleApiClient googleApiClient;
-    public ImageView profilepic;
-    public static final int REQ_CODE= 9001;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,63 +53,75 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginbtn = (Button) findViewById(R.id.loginbtn);
         loginbtn.setTypeface(customFont);
         coordinatorlogin = (CoordinatorLayout) findViewById(R.id.coordinatorLogin);
-        email = (TextView) findViewById(R.id.input_email);
-        email.setTypeface(customFont);
-        name = (TextView) findViewById(R.id.input_name);
-        name.setTypeface(customFont);
+        username = (EditText) findViewById(R.id.input_username);
+        username.setTypeface(customFont);
+        password = (EditText) findViewById(R.id.input_password);
+        password.setTypeface(customFont);
         register = (TextView)findViewById(R.id.reglink);
         register.setTypeface(customFont);
-        profile_section=(LinearLayout)findViewById((R.id.profile_section));
-        sign_in_button=(SignInButton)findViewById(R.id.sign_in_button);
-        profilepic=(ImageView)findViewById(R.id.profile_pic);
-
-
-        loginbtn.setOnClickListener(this);
-        sign_in_button.setOnClickListener(this);
-        profile_section.setVisibility(View.GONE);
-        GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();//take in email
-        googleApiClient=new GoogleApiClient.Builder(this).
-                enableAutoManage(this,this).
-                addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions).
-                build();//signinapi
 
 //        //<-----SHARED PREFERENCES---->
 //        SharedPreferences prefs = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 //        String restoredText = prefs.getString("email", null);
 //        if (restoredText != null) {
-//                                                                                                                                                                                              /*  String loadusername = prefs.getString("Username", "No name defined");//"No name defined" is the default value.
-//                                                                                                                                                                                                String loadpassword = prefs.getString("Password", " "); //0 is the default value.
-//                                                                                                                                                                                                Username.setText(loadusername);
-//                                                                                                                                                                                                Password.setText(loadpassword);*/
+//      /*  String loadusername = prefs.getString("Username", "No name defined");//"No name defined" is the default value.
+//        String loadpassword = prefs.getString("Password", " "); //0 is the default value.
+//        Username.setText(loadusername);
+//        Password.setText(loadpassword);*/
 //            Intent i = new Intent(LoginActivity.this,HomeActitvity.class);
 //            startActivity(i);
+
+
+
+
+        //<l---------loginpubnub----->
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            String lastUsername = extras.getString("oldUsername", "");
+            username.setText(lastUsername);
+        }
+
+
+        }//        <--onCreateClose-->
+
+
+         @Override
+        protected void onStart() {
+            super.onStart();
+
+            //<------VALIDATION---->
+            loginbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+ //                 String text, passwordText; // We created two strings, email and password
 //
-//        }
+//                    text = username.getText().toString(); // We then got the text from Edittext
+//                    passwordText = password.getText().toString();
+//                    if (text.equals("") || passwordText.equals("")){
+//                        Toast.makeText(LoginActivity.this, "Please check your username and password!", Toast.LENGTH_SHORT).show();
+//                    } else{
+//
+//                        Intent i = new Intent(LoginActivity.this,HomeActitvity.class);
+//                        startActivity(i);
+//                    }
 
-        //}
 
-        // @Override
-        //protected void onStart() {
-        //    super.onStart();
 
-        //    //<------VALIDATION---->
-        //    loginBtn.setOnClickListener(new View.OnClickListener() {
-        //        @Override
-        //        public void onClick(View view) {
-        //
-        //            String text, passwordText; // We created two strings, email and password
-        //
-        //            text = email.getText().toString(); // We then got the text from Edittext
-        //            passwordText = Password.getText().toString();
-        //            if (text.equals("") || passwordText.equals("")){
-        //                Toast.makeText(LoginActivity.this, "Please check your username and password!", Toast.LENGTH_SHORT).show();
-        //            } else{
-        //              // loginuser();
-        //                Intent i = new Intent(LoginActivity.this,HomeActitvity.class);
-        //                startActivity(i);
-        //            }
-        //        }
-        //    });
+                    //<----loginpubnub--->
+                    String musername = username.getText().toString();
+                    if (!validUsername(musername))
+                        return;
+
+                    SharedPreferences sp = getSharedPreferences(Constants.CHAT_PREFS,MODE_PRIVATE);
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString(Constants.CHAT_USERNAME, musername);
+                    edit.apply();
+
+                    Intent intent = new Intent(LoginActivity.this, HomeActitvity.class);
+                    startActivity(intent);
+                }
+            });
 
 
 
@@ -116,96 +134,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //Toast toastname = new Toast(activity, "mesagee", length of toast);
-        //  Snackbar snackbarName = Snackbar.make(coordinatorlogin, "Mesage", Snackbar.LENGTH_INDEFINITE);
-        // snackbarName.show();
+//        Toast toastname = new Toast(, "mesagee", length of toast);
+//          Snackbar snackbarName = Snackbar.make(coordinatorlogin, "Mesage", Snackbar.LENGTH_INDEFINITE);
+//         snackbarName.show();
     }
-
-    @Override
-    public void onClick(View view) {
-
-        switch(view.getId())
-        {
-            case R.id.sign_in_button:
-                SignInButton();
-                break;
-            case R.id.loginbtn :
-//                loginbutton();
-                loginbtn.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View view) {
-                        Intent i = new Intent(LoginActivity.this,HomeActitvity.class);
-                        startActivity(i);
-                    }
-                });
-
-                break;
-
+    /**
+     * Optional function to specify what a username in your chat app can look like.
+     * @param musername The name entered by a user.
+     * @return
+     */
+    private boolean validUsername(String musername) {
+        if (username.length() == 0) {
+            username.setError("Username cannot be empty.");
+            return false;
         }
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-
-    public void SignInButton(){
-        Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        startActivityForResult(intent,REQ_CODE);
-
-    }
-
-//    public void signoutbutton()
-//    {
-//        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-//            @Override
-//            public void onResult(@NonNull Status status) {
-//                updateui(false);
-//            }
-//        });
-//
-//    }
-
-
-    public void handleResult(GoogleSignInResult result){
-        if (result.isSuccess())
-        {
-            GoogleSignInAccount account = result.getSignInAccount();
-            String useremail = account.getEmail();
-            String username = account.getDisplayName();
-            String img_url = account.getPhotoUrl().toString();
-            name.setText(username);
-            email .setText(useremail);
-            Glide.with(this).load(img_url).into(profilepic);
-            updateui(true);
+        if (username.length() > 16) {
+            username.setError("Username too long.");
+            return false;
         }
-        else
-        {
-            updateui(false);
-        }
-
-    }
-
-
-    public void updateui (boolean islogin){
-
-        if(islogin){
-            profile_section.setVisibility(View.VISIBLE);
-            sign_in_button.setVisibility(View.GONE);
-        }
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //for recieveing the result
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==REQ_CODE)
-        {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleResult(result);
-        }
+        return true;
     }
 
     //    private void loginuser(){
@@ -224,9 +171,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //                            resp =new JSONObject(response);
     //                            String message=resp.getString("message");
     //                            int status=resp.getInt("status");
-    //                            Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
+    //                            Toast.makeText(GoogleLoginActivity.this,message,Toast.LENGTH_LONG).show();
     //                            if(message.equals("Success")){
-    //                            Intent i = new Intent(LoginActivity.this, HomeActitvity.class);
+    //                            Intent i = new Intent(GoogleLoginActivity.this, HomeActitvity.class);
     //
     //                                //<shared preferences>
     //                                SharedPreferences.Editor editor = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE).edit();
@@ -248,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //                new Response.ErrorListener() {
     //                    @Override
     //                    public void onErrorResponse(VolleyError error) {
-    //                        Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+    //                        Toast.makeText(GoogleLoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
     //                    }
     //                }){
     //            @Override

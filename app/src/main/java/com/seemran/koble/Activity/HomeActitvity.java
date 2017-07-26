@@ -1,6 +1,8 @@
 package com.seemran.koble.Activity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -10,8 +12,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.seemran.koble.Extras.ContactsFragment;
+import com.seemran.koble.ChatPubnub.Constants;
+import com.seemran.koble.Extras.PhonebookContacts.ContactsFragment;
 import com.seemran.koble.Fragments.CallFragment;
 import com.seemran.koble.Fragments.Groupfragment;
 import com.seemran.koble.Fragments.RecentFragment;
@@ -24,11 +34,21 @@ import java.util.List;
 
 
 
+
 public class HomeActitvity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public FloatingActionButton fab;
     final int RequestPermissionCode = 1;
+//    <---floatbutton--->
+    private Boolean isFabOpen = false;
+    public  FloatingActionButton fab,fab1,fab2;
+    public Animation fab_open,fab_close,rotate_forward,rotate_backward;
+//    <--newchat-->
+    public Layout layout_root;
+    final Context context = this;
+
+
+
 
     private int[] tabIcons = {
             R.drawable.ic_recent,
@@ -53,16 +73,28 @@ public class HomeActitvity extends AppCompatActivity {
 
 
 
+
         //<----FLOATING ACTION BUTTON---->
-//        fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomeActitvity.this, NewMessageActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton)findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateFAB();
+            }
+        });
+
     }
+//    <--oncreatebundleclose-->
+
+
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
@@ -117,4 +149,35 @@ public class HomeActitvity extends AppCompatActivity {
                     Manifest.permission.READ_CONTACTS}, RequestPermissionCode);
         }
     }
+
+
+
+    public void animateFAB(){
+
+        if(isFabOpen){
+
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj","open");
+
+        }
+    }
+
+
+
+
 }

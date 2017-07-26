@@ -24,6 +24,8 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
     </LinearLayout>
+
+    <!--closeFloatButtonAction-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab2"
         android:layout_width="wrap_content"
@@ -36,6 +38,8 @@
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
         android:src="@drawable/ic_done" />
+
+    <!--newchat-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab1"
         android:layout_width="wrap_content"
@@ -48,6 +52,8 @@
         app:backgroundTint="@color/colorFAB1"
         app:pressedTranslationZ="12dp"
         android:src="@drawable/ic_message" />
+
+    <!--openoptions-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

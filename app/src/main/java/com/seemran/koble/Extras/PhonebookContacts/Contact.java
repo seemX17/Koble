@@ -1,4 +1,4 @@
-package com.seemran.koble.Models;
+package com.seemran.koble.Extras.PhonebookContacts;
 
 /**
  * Created by Seemran on 7/15/2017.

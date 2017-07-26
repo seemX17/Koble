@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/toolbar_title"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="KOBLE - Sign Up"/>
+                    android:text="Sign Up"/>
 
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
@@ -50,18 +50,18 @@
                   android:orientation="vertical"
                   android:layout_margin="10dp">
 
-                  <!--<android.support.design.widget.TextInputLayout-->
-                      <!--android:layout_width="match_parent"-->
-                      <!--android:layout_height="wrap_content"-->
-                      <!--android:id="@+id/layout_username">-->
+                  <android.support.design.widget.TextInputLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/layout_username">
 
-                      <!--<EditText-->
-                          <!--android:layout_width="match_parent"-->
-                          <!--android:layout_height="wrap_content"-->
-                          <!--android:id="@+id/regusername"-->
-                          <!--android:hint="username"-->
-                          <!--android:inputType="text"/>-->
-                   <!--</android.support.design.widget.TextInputLayout>-->
+                      <EditText
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/regusername"
+                          android:hint="username"
+                          android:inputType="text"/>
+                   </android.support.design.widget.TextInputLayout>
 
                   <android.support.design.widget.TextInputLayout
                       android:layout_width="match_parent"

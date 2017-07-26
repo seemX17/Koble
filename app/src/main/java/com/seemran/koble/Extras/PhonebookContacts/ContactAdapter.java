@@ -1,4 +1,4 @@
-package com.seemran.koble.Adapter;
+package com.seemran.koble.Extras.PhonebookContacts;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.seemran.koble.Models.Contact;
 import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.R;
 

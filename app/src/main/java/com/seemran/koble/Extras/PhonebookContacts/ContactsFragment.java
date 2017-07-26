@@ -1,4 +1,4 @@
-package com.seemran.koble.Extras;
+package com.seemran.koble.Extras.PhonebookContacts;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.seemran.koble.Models.Contact;
-import com.seemran.koble.Adapter.ContactAdapter;
+import com.seemran.koble.Extras.PhonebookContacts.Contact;
+import com.seemran.koble.Extras.PhonebookContacts.ContactAdapter;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
