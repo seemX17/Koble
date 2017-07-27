@@ -5,12 +5,12 @@ package com.seemran.koble.ChatPubnub;
  */
 
 public class Constants {
-    public static final String PUBLISH_KEY   = "pub-c-f135c619-b0f9-4c75-b796-89c696b7bdde";
-    public static final String SUBSCRIBE_KEY = "sub-c-4a7d49ec-716b-11e7-b538-02ee2ddab7fe";
+    public static final String PUBLISH_KEY   = "pub-c-aa7eac0a-5a9c-4743-abdb-ea1a8b4becaa";
+    public static final String SUBSCRIBE_KEY = "sub-c-7ce038a8-729d-11e7-b5a4-0619f8945a4f";
 
-    public static final String CHAT_PREFS    = "me.kevingleason.SHARED_PREFS";
-    public static final String CHAT_USERNAME = "me.kevingleason.SHARED_PREFS.USERNAME";
-    public static final String CHAT_ROOM     = "me.kevingleason.CHAT_ROOM";
+    public static final String CHAT_PREFS    = "me.SHARED_PREFS";
+    public static final String CHAT_USERNAME = "me.SHARED_PREFS.USERNAME";
+    public static final String CHAT_ROOM     = "me.CHAT_ROOM";
 
     public static final String JSON_GROUP = "groupMessage";
     public static final String JSON_DM    = "directMessage";

@@ -1,32 +1,24 @@
 package com.seemran.koble.ChatPubnub;
 
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
-import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.pubnub.api.Callback;
-import com.pubnub.api.PnGcmMessage;
-import com.pubnub.api.PnMessage;
 import com.pubnub.api.Pubnub;
 import com.pubnub.api.PubnubError;
 import com.pubnub.api.PubnubException;
@@ -37,13 +29,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class MainActivity extends Fragment{
+public class ChatActivity extends AppCompatActivity {
     private Pubnub mPubNub;
     private Button mChannelView;
     private EditText mMessageET;
@@ -56,53 +47,39 @@ public class MainActivity extends Fragment{
     private String channel  = "MainChat";
     Context ctx;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_chat, container, false);
-        ctx = getActivity();
-        mSharedPrefs = ctx.getSharedPreferences(Constants.CHAT_PREFS, ctx.MODE_PRIVATE);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+        mSharedPrefs = getSharedPreferences(Constants.CHAT_PREFS, MODE_PRIVATE);
         if (!mSharedPrefs.contains(Constants.CHAT_USERNAME)){
-            Intent toLogin = new Intent(ctx, LoginActivity.class);
+            Intent toLogin = new Intent(this, LoginActivity.class);
             startActivity(toLogin);
+            return;
         }
 
-        Bundle extras = getActivity().getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
         if (extras != null){
             Log.d("Main-bundle",extras.toString() + " Has Chat: " + extras.getString(Constants.CHAT_ROOM));
             if (extras.containsKey(Constants.CHAT_ROOM)) this.channel = extras.getString(Constants.CHAT_ROOM);
         }
 
         this.username = mSharedPrefs.getString(Constants.CHAT_USERNAME,"Anonymous");
-        this.mListView = getListView();
-        this.mChatAdapter = new ChatAdapter(ctx, new ArrayList<ChatMessage>());
+        this.mListView = (ListView)findViewById(R.id.list);
+        this.mChatAdapter = new ChatAdapter(this, new ArrayList<ChatMessage>());
         this.mChatAdapter.userPresence(this.username, "join"); // Set user to online. Status changes handled in presence
         setupAutoScroll();
         this.mListView.setAdapter(mChatAdapter);
-//        setupListView();
+        //setupListView();
 
-        this.mMessageET = (EditText) view.findViewById(R.id.message_et);
-        this.mChannelView = (Button) view.findViewById(R.id.channel_bar);
+        this.mMessageET = (EditText) findViewById(R.id.message_et);
+        this.mChannelView = (Button) findViewById(R.id.channel_bar);
         this.mChannelView.setText(this.channel);
 
         initPubNub();
-        return view;
-    }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
     }
 
-    @Override
-     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.Planets, android.R.layout.simple_list_item_1);
-        setListAdapter(adapter);
-        getListView().setOnItemClickListener(this);
-        // TODO: Update to store messages in the array.
-    }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -114,9 +91,9 @@ public class MainActivity extends Fragment{
      * Instantiate PubNub object if it is null. Subscribe to channel and pull old messages via
      *   history.
      */
-
+@Override
     protected void onRestart() {
-        super.onResume();
+        super.onRestart();
         if (this.mPubNub==null){
             initPubNub();
         } else {
@@ -145,7 +122,7 @@ public class MainActivity extends Fragment{
         this.mPubNub.setUUID(this.username);
         subscribeWithPresence();
         history();
-       // gcmRegister();
+        // gcmRegister();
     }
 
     /**
@@ -181,7 +158,7 @@ public class MainActivity extends Fragment{
                     for (int i = 0; i < hereNowJSON.length(); i++) {
                         usersOnline.add(hereNowJSON.getString(i));
                     }
-                    getActivity().runOnUiThread(new Runnable() {
+                    ChatActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (mHereNow != null)
@@ -233,15 +210,15 @@ public class MainActivity extends Fragment{
                     final boolean online = state.has(Constants.STATE_LOGIN);
                     final long loginTime = online ? state.getLong(Constants.STATE_LOGIN) : 0;
 
-                    getActivity().runOnUiThread(new Runnable() {
+                    ChatActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (!online)
                             {
-                                Toast.makeText(getActivity(), "Please check your username and password!", Toast.LENGTH_SHORT).show();
-                               Toast.makeText(getActivity(), user + " is not online.", Toast.LENGTH_SHORT).show();}
+                                Toast.makeText(ctx, "Please check your username and password!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ctx, user + " is not online.", Toast.LENGTH_SHORT).show();}
                             else
-                                Toast.makeText(getActivity(), user + " logged in since " + ChatAdapter.formatTimeStamp(loginTime), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ctx, user + " logged in since " + ChatAdapter.formatTimeStamp(loginTime), Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -273,7 +250,7 @@ public class MainActivity extends Fragment{
                         long time   = json.getLong(Constants.JSON_TIME);
                         if (name.equals(mPubNub.getUUID())) return; // Ignore own messages
                         final ChatMessage chatMsg = new ChatMessage(name, msg, time);
-                        getActivity().runOnUiThread(new Runnable() {
+                        ChatActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 mChatAdapter.addMessage(chatMsg);
@@ -315,13 +292,13 @@ public class MainActivity extends Fragment{
                         final int occ = json.getInt("occupancy");
                         final String user = json.getString("uuid");
                         final String action = json.getString("action");
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mChatAdapter.userPresence(user, action);
-                                mHereNow.setTitle(String.valueOf(occ));
-                            }
-                        });
+//                       ChatActivity.this.runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                mChatAdapter.userPresence(user, action);
+//                                mHereNow.setTitle(String.valueOf(occ));
+//                            }
+//                        });
                     } catch (JSONException e){ e.printStackTrace(); }
                 }
             }
@@ -361,14 +338,14 @@ public class MainActivity extends Fragment{
                             e.printStackTrace();
                         }
                     }
-
-                   getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getActivity(),"RUNNIN",Toast.LENGTH_SHORT).show();
-                            mChatAdapter.setMessages(chatMsgs);
-                        }
-                    });
+//
+//                   ChatActivity.this.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(ctx,"RUNNIN",Toast.LENGTH_SHORT).show();
+//                            mChatAdapter.setMessages(chatMsgs);
+//                        }
+//                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -448,8 +425,8 @@ public class MainActivity extends Fragment{
      */
     private void alertHereNow(Set<String> userSet){
         List<String> users = new ArrayList<String>(userSet);
-        LayoutInflater li = LayoutInflater.from(getActivity());
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        LayoutInflater li = LayoutInflater.from(this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle("Here Now");
         alertDialog.setNegativeButton("Done", new DialogInterface.OnClickListener() {
             @Override
@@ -457,7 +434,7 @@ public class MainActivity extends Fragment{
                 dialog.dismiss();
             }
         });
-        final ArrayAdapter<String> hnAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,users);
+        final ArrayAdapter<String> hnAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,users);
         alertDialog.setAdapter(hnAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -475,10 +452,10 @@ public class MainActivity extends Fragment{
      * @param view
      */
     public void changeChannel(View view){
-        LayoutInflater li = LayoutInflater.from(getActivity());
+        LayoutInflater li = LayoutInflater.from(this);
         View promptsView = li.inflate(R.layout.channel_change, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setView(promptsView);
 
         final EditText userInput = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
@@ -609,7 +586,7 @@ public class MainActivity extends Fragment{
 //            String msg="";
 //            try {
 //                if (gcm == null) {
-//                    gcm = GoogleCloudMessaging.getInstance(MainActivity.this);
+//                    gcm = GoogleCloudMessaging.getInstance(ChatFragment.this);
 //                }
 //                gcmRegId = gcm.register(Constants.GCM_SENDER_ID);
 //                msg = "Device registered, registration ID: " + gcmRegId;
@@ -630,7 +607,7 @@ public class MainActivity extends Fragment{
 //        protected Void doInBackground(Void... params) {
 //            try {
 //                if (gcm == null) {
-//                    gcm = GoogleCloudMessaging.getInstance(MainActivity.this);
+//                    gcm = GoogleCloudMessaging.getInstance(ChatFragment.this);
 //                }
 //
 //                // Unregister from GCM

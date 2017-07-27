@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowSoftInputMode="adjustPan"
-    tools:context="com.seemran.koble.ChatPubnub.MainActivity">
+    tools:context="com.seemran.koble.ChatPubnub.ChatActivity">
 
 
-
+    <Button
+        android:id="@+id/channel_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AppTheme"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Channel"
+        android:onClick="changeChannel"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_alignParentTop="true" />
 
     <ListView
-        android:id="@android:id/list"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_below="@id/channel_bar"
+        android:id="@+id/list"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:transcriptMode="alwaysScroll"
+        android:layout_marginTop="30dp"
         android:layout_above="@+id/msg_box"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_above="@+id/msg_box"
-       />
+        />
 
     <LinearLayout
         android:id="@+id/msg_box"
@@ -42,12 +52,13 @@
             android:layout_marginRight="5dp"
             android:layout_weight="4"/>
 
-        <Button
-            android:text="send"
-                        android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+             android:src="@drawable/ic_send"
             android:onClick="sendMessage"/>
+
 
     </LinearLayout>
 

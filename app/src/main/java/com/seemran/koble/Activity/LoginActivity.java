@@ -3,7 +3,6 @@ package com.seemran.koble.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,27 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.seemran.koble.ChatPubnub.Constants;
+import com.seemran.koble.ChatPubnub.ChatActivity;
 import com.seemran.koble.R;
-
-import org.mortbay.jetty.security.Password;
-
-import static android.R.attr.name;
-import static com.seemran.koble.Extras.GoogleLoginActivity.MyPREFERENCES;
-import static com.seemran.koble.R.id.sign_in_button;
 
 public class LoginActivity extends AppCompatActivity{
 

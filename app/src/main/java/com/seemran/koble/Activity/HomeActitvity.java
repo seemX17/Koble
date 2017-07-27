@@ -17,12 +17,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
 
-import com.seemran.koble.ChatPubnub.Constants;
-import com.seemran.koble.ChatPubnub.MainActivity;
-import com.seemran.koble.Extras.PhonebookContacts.ContactsFragment;
+import com.seemran.koble.ChatPubnub.ChatActivity;
+import com.seemran.koble.PhonebookContacts.ContactsFragment;
 import com.seemran.koble.Fragments.CallFragment;
 import com.seemran.koble.Fragments.Groupfragment;
 import com.seemran.koble.Fragments.RecentFragment;
@@ -36,7 +33,7 @@ import java.util.List;
 
 
 
-public class HomeActitvity extends AppCompatActivity {
+public class HomeActitvity extends AppCompatActivity  {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     final int RequestPermissionCode = 1;
@@ -94,11 +91,16 @@ public class HomeActitvity extends AppCompatActivity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActitvity.this, MainActivity.class);
+                Intent i = new Intent(HomeActitvity.this, ChatActivity.class);
                 startActivity(i);
             }
         });
-
+//        fab2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
     }
 //    <--oncreatebundleclose-->
 
@@ -170,7 +172,7 @@ public class HomeActitvity extends AppCompatActivity {
             fab1.setClickable(false);
             fab2.setClickable(false);
             isFabOpen = false;
-            Log.d("Raj", "close");
+            Log.d("floatbutton", "close");
 
         } else {
 
@@ -180,7 +182,7 @@ public class HomeActitvity extends AppCompatActivity {
             fab1.setClickable(true);
             fab2.setClickable(true);
             isFabOpen = true;
-            Log.d("Raj","open");
+            Log.d("floatbutton","open");
 
         }
     }

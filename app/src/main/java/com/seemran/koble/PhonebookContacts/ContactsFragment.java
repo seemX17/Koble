@@ -1,6 +1,7 @@
-package com.seemran.koble.Extras.PhonebookContacts;
+package com.seemran.koble.PhonebookContacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,10 +13,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.seemran.koble.Extras.PhonebookContacts.Contact;
-import com.seemran.koble.Extras.PhonebookContacts.ContactAdapter;
+import com.seemran.koble.ChatPubnub.ChatActivity;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class ContactsFragment extends Fragment {
     Cursor cursor ;
     String name, phonenumber ;
     ArrayList<Contact> contactList;
+    public ImageView newchat;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,9 +45,24 @@ public class ContactsFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+//        newchat = (ImageView) view.findViewById(R.id.chat);
         return view;
 
     }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+
+        //get the button view
+
+//        newchat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), ChatActivity.class);
+//                getActivity().startActivity(i);
+//            }
+//        });
+//    }
     public void GetContactsIntoArrayList(){
         cursor = getActivity().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 null,null, null, null);

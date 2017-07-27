@@ -34,10 +34,10 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:visibility="invisible"
-        app:backgroundTint="@color/colorFAB2"
+        app:backgroundTint="@color/colorFAB1"
         app:elevation="6dp"
         app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_done" />
+        android:src="@drawable/ic_chat" />
 
     <!--newchat-->
     <android.support.design.widget.FloatingActionButton
@@ -51,7 +51,7 @@
         app:elevation="6dp"
         app:backgroundTint="@color/colorFAB1"
         app:pressedTranslationZ="12dp"
-        android:src="@drawable/ic_message" />
+        android:src="@drawable/ic_group_add" />
 
     <!--openoptions-->
     <android.support.design.widget.FloatingActionButton

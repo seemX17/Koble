@@ -12,7 +12,6 @@
         <TextView
             android:id="@+id/chat_user"
             android:text="GleasonK"
-            android:textColor="@color/pn_blue"
             android:textSize="15sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
@@ -29,8 +28,7 @@
         <TextView
             android:id="@+id/chat_time"
             android:text="7:45pm"
-            android:textColor="@color/pn_red"
-            android:textSize="12sp"
+           android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -42,7 +40,7 @@
 
     <TextView
         android:id="@+id/chat_message"
-        android:text="@string/hello_world"
+        android:text="hello_world"
         android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
