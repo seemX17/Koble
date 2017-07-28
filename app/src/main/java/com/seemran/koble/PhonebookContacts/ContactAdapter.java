@@ -3,7 +3,6 @@ package com.seemran.koble.PhonebookContacts;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.seemran.koble.Activity.LoginActivity;
-import com.seemran.koble.ChatPubnub.ChatActivity;
+import com.seemran.koble.Activity.ChatActivity;
+import com.seemran.koble.Activity.OnCallActivity;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
@@ -39,7 +39,8 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
         public TextView namecontact;
         public CircleImageView userimage;
         public  LinearLayout ContactLayout;
-        public ImageView chatimage;
+        public ImageView chatimage,callimage;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -48,6 +49,7 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
             namecontact=(TextView) itemView.findViewById(R.id.namecontact);
             ContactLayout=(LinearLayout)itemView.findViewById(R.id.contactlayout);
             chatimage=(ImageView) itemView.findViewById(R.id.chat);
+            callimage=(ImageView)itemView.findViewById(R.id.call);
         }
 
     }
@@ -76,6 +78,14 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
                 ctx.startActivity(i);
             }
         });
+holder.callimage.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i = new Intent(ctx, OnCallActivity.class);
+        ctx.startActivity(i);
+    }
+});
+
 
 
     }
