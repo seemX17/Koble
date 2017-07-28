@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.seemran.koble.ChatPubnub.Constants;
-import com.seemran.koble.ChatPubnub.ChatActivity;
 import com.seemran.koble.R;
 
 public class LoginActivity extends AppCompatActivity{

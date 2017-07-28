@@ -1,7 +1,6 @@
 package com.seemran.koble.PhonebookContacts;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.seemran.koble.ChatPubnub.ChatActivity;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;

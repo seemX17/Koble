@@ -1,4 +1,4 @@
-package com.seemran.koble.ChatPubnub;
+package com.seemran.koble.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,7 +22,10 @@ import com.pubnub.api.Callback;
 import com.pubnub.api.Pubnub;
 import com.pubnub.api.PubnubError;
 import com.pubnub.api.PubnubException;
-import com.seemran.koble.Activity.LoginActivity;
+import com.seemran.koble.ChatPubnub.BasicCallBack;
+import com.seemran.koble.ChatPubnub.ChatAdapter;
+import com.seemran.koble.ChatPubnub.ChatMessage;
+import com.seemran.koble.ChatPubnub.Constants;
 import com.seemran.koble.R;
 
 import org.json.JSONArray;
