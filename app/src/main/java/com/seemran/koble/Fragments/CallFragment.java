@@ -1,6 +1,7 @@
 package com.seemran.koble.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,12 +10,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.seemran.koble.Activity.OnCallActivity;
 import com.seemran.koble.Models.Contact;
 import com.seemran.koble.Adapter.CallAdapter;
 import com.seemran.koble.R;
@@ -27,7 +30,7 @@ public class CallFragment extends Fragment {
     Context ctx;
     public  static final int RequestPermissionCode  = 1 ;
     Cursor cursor ;
-    String name, phonenumber ;
+   public String name, phonenumber ;
     ArrayList<Contact> contactList;
     public ImageView newchat;
     @Override
@@ -45,6 +48,8 @@ public class CallFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+
 //        newchat = (ImageView) view.findViewById(R.id.chat);
         return view;
 
@@ -93,6 +98,7 @@ public class CallFragment extends Fragment {
             contact.setName(name);
             contact.setNumber(phonenumber);
             contactList.add(contact);
+
         }
 
         cursor.close();

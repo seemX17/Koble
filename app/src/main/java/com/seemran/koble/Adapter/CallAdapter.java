@@ -2,6 +2,7 @@ package com.seemran.koble.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.seemran.koble.Activity.OnCallActivity;
 import com.seemran.koble.Models.Contact;
 import com.seemran.koble.R;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -28,6 +30,7 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder>
 {
     ArrayList<Contact> namecontact;
     Context ctx;
+    String phnumber;
 
     public CallAdapter(ArrayList<Contact> namecontact, Context context )
     {
@@ -48,7 +51,7 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder>
 
             userimage = (CircleImageView) itemView.findViewById(R.id.userimage);
             namecontact=(TextView) itemView.findViewById(R.id.namecontact);
-            ContactLayout=(LinearLayout)itemView.findViewById(R.id.contactlayout);
+            ContactLayout=(LinearLayout)itemView.findViewById(R.id.calllayout);
             chatimage=(ImageView) itemView.findViewById(R.id.chat);
             callimage=(ImageView)itemView.findViewById(R.id.call);
         }
@@ -70,6 +73,8 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder>
         holder.namecontact.setText(contact.getName());
         holder.namecontact.setTypeface(LoginActivity.customFont);
 
+
+
         final Contact finalContact = contact;
         holder.chatimage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,16 +84,16 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder>
                 ctx.startActivity(i);
             }
         });
-holder.callimage.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent i = new Intent(ctx, OnCallActivity.class);
-        ctx.startActivity(i);
-    }
-});
 
 
-
+      holder.callimage.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(ctx, OnCallActivity.class);
+            i.putExtra("personId",finalContact.getNumber());
+             ctx.startActivity(i);
+        }
+    });
     }
 
     @Override

@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-   android:id="@+id/contactlayout" >
+   android:id="@+id/calllayout" >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userimage"
             android:layout_width="70dp"

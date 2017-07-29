@@ -3,6 +3,7 @@ package com.seemran.koble.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class OnCallActivity extends AppCompatActivity {
 private CircleImageView oncall,speaker,microphone,message;
     boolean isPressed = false;
+     String newString;
 
 
 
@@ -28,6 +30,18 @@ private CircleImageView oncall,speaker,microphone,message;
         speaker = (CircleImageView)findViewById(R.id.loud);
         microphone=(CircleImageView)findViewById(R.id.voice);
         message=(CircleImageView)findViewById(R.id.messagecall);
+
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                newString= null;
+            } else {
+                newString= extras.getString("personId");
+            }
+        } else {
+            newString= (String) savedInstanceState.getSerializable("personId");
+        }
     }
 
 
@@ -77,6 +91,16 @@ private CircleImageView oncall,speaker,microphone,message;
             public void onClick(View view) {
                 Intent i = new Intent(OnCallActivity.this,ChatActivity.class);
                 startActivity(i);
+            }
+        });
+
+
+        oncall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+newString));
+                startActivity(callIntent);
             }
         });
     }

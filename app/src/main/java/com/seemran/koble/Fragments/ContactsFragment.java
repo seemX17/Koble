@@ -13,10 +13,10 @@ import com.seemran.koble.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactFragment extends Fragment {
+public class ContactsFragment extends Fragment {
 
 
-    public ContactFragment() {
+    public ContactsFragment() {
         // Required empty public constructor
     }
 

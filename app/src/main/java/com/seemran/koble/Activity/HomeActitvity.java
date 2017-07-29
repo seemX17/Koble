@@ -19,7 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.seemran.koble.Fragments.CallFragment;
-import com.seemran.koble.Fragments.ContactFragment;
+import com.seemran.koble.Fragments.ContactsFragment;
 import com.seemran.koble.Fragments.Groupfragment;
 import com.seemran.koble.Fragments.RecentFragment;
 import com.seemran.koble.Fragments.SettingsFragment;
@@ -117,7 +117,7 @@ public class HomeActitvity extends AppCompatActivity  {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager()); // This is hosekeeping android stuff
         adapter.addFrag(new RecentFragment());
         adapter.addFrag(new CallFragment());
-        adapter.addFrag(new ContactFragment());
+        adapter.addFrag(new ContactsFragment());
         adapter.addFrag(new Groupfragment());
         adapter.addFrag(new SettingsFragment());
         viewPager.setAdapter(adapter);
