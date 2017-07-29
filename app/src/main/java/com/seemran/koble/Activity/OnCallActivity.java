@@ -54,7 +54,7 @@ private CircleImageView oncall,speaker,microphone,message;
                 if(isPressed)
                     speaker.setBackgroundResource(R.drawable.ic_volume_up);
                 else
-                    speaker.setBackgroundResource(R.drawable.ic_volume_down);
+                    speaker.setBackgroundResource(R.drawable.ic_volume_off);
                 isPressed=!isPressed;
             }
         });

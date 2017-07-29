@@ -1,4 +1,4 @@
-package com.seemran.koble.PhonebookContacts;
+package com.seemran.koble.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.Activity.ChatActivity;
 import com.seemran.koble.Activity.OnCallActivity;
+import com.seemran.koble.Models.Contact;
 import com.seemran.koble.R;
 
 import java.util.ArrayList;
@@ -23,12 +24,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Seemran on 7/16/2017.
  */
 
-public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewHolder>
+public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder>
 {
     ArrayList<Contact> namecontact;
     Context ctx;
 
-    public ContactAdapter(ArrayList<Contact> namecontact, Context context )
+    public CallAdapter(ArrayList<Contact> namecontact, Context context )
     {
         this.ctx = context;
         this.namecontact=namecontact;
@@ -55,15 +56,15 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.MyViewH
     }
     //implement
     @Override
-    public ContactAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CallAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.contact, parent, false);
+                .inflate(R.layout.call, parent, false);
 
-        return new ContactAdapter.MyViewHolder(itemView);
+        return new CallAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ContactAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(CallAdapter.MyViewHolder holder, int position) {
         Contact contact = new Contact();
         contact = namecontact.get(position);
         holder.namecontact.setText(contact.getName());
