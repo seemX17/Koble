@@ -9,14 +9,13 @@
     <!-- pubnub -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <permission
         android:name="your.package.name.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-
     <uses-permission android:name="your.package.name.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-
+    <!--location-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -25,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash">
+        <activity android:name=".Location.LocationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,20 +42,27 @@
         </intent-filter>
 
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.OnCallActivity"></activity>
-        <service
-            android:name=".CustomFirebaseMessagingService">
+        <activity android:name=".Activity.OnCallActivity" />
+
+        <service android:name=".CustomFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".CustomFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".Splash"></activity>
+
+        <!-- Service to asynchronously fetch a location address using a Geocoder. Setting the
+        android:exported attribute to "false" stops other apps from starting this
+        service, even when using an explicit intent. -->
         <service
-            android:name=".CustomFirebaseInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
+            android:name=".Location.FetchAddressIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>
