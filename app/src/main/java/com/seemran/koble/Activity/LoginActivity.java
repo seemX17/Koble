@@ -3,6 +3,7 @@ package com.seemran.koble.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.seemran.koble.ChatPubnub.Constants;
+import com.seemran.koble.Location.LocationActivity;
 import com.seemran.koble.R;
 
 public class LoginActivity extends AppCompatActivity{
@@ -100,7 +102,7 @@ public class LoginActivity extends AppCompatActivity{
                     edit.putString(Constants.CHAT_USERNAME, musername);
                     edit.apply();
 
-                    Intent intent = new Intent(LoginActivity.this, HomeActitvity.class);
+                    Intent intent = new Intent(LoginActivity.this, LocationActivity.class);
                     startActivity(intent);
                 }
             });

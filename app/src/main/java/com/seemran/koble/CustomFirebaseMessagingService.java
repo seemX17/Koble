@@ -86,7 +86,7 @@ public class CustomFirebaseMessagingService extends FirebaseMessagingService{
 
         Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.ic_chat);
-        Uri customUri = Uri.parse("android.resource://com.coderefer.firebasecloudmessagingtutorial/" + R.raw.notification);
+//        Uri customUri = Uri.parse("android.resource://com.coderefer.firebasecloudmessagingtutorial/" + R.raw.notification);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
         notificationBuilder.setSmallIcon(R.drawable.ic_call);
         notificationBuilder.setLargeIcon(icon)
@@ -94,7 +94,7 @@ public class CustomFirebaseMessagingService extends FirebaseMessagingService{
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setVibrate(pattern)
-                .setSound(customUri)
+//                .setSound(customUri)
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =

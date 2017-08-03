@@ -24,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Location.LocationActivity">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +55,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Splash"></activity>
+        <activity android:name=".Location.LocationActivity"></activity>
 
         <!-- Service to asynchronously fetch a location address using a Geocoder. Setting the
         android:exported attribute to "false" stops other apps from starting this
@@ -63,6 +63,9 @@
         <service
             android:name=".Location.FetchAddressIntentService"
             android:exported="false"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

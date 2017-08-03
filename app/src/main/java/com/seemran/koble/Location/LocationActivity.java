@@ -3,6 +3,7 @@ package com.seemran.koble.Location;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
@@ -21,19 +22,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.seemran.koble.Activity.HomeActitvity;
+import com.seemran.koble.Activity.LoginActivity;
 import com.seemran.koble.BuildConfig;
 import com.seemran.koble.R;
+import com.seemran.koble.Splash;
 
 public class LocationActivity extends AppCompatActivity {
     private static final String TAG = LocationActivity.class.getSimpleName();
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
     private static final String ADDRESS_REQUESTED_KEY = "address-request-pending";
     private static final String LOCATION_ADDRESS_KEY = "location-address";
-    private FusedLocationProviderClient mFusedLocationClient;// Provides access to the Fused Location Provider API.
+     private FusedLocationProviderClient mFusedLocationClient;// Provides access to the Fused Location Provider API.
     private Location mLastLocation;//Represents a geographical location.
     private boolean mAddressRequested;//Tracks whether the user has requested an address. Becomes true when the user requests an
                                       //* address and false when the address (or an error message) is delivered.
@@ -42,16 +47,22 @@ public class LocationActivity extends AppCompatActivity {
     private TextView mLocationAddressTextView;//Displays the location address.
     private ProgressBar mProgressBar; //isible while the address is being fetched.
     private Button mFetchAddressButton;//Kicks off the request to fetch an address when pressed.
+    public Typeface customfont;
+    private int SPLASH_LENGTH = 3000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__location);
+        customfont = Typeface.createFromAsset(getAssets(), "fonts/montserrat.otf");
         mResultReceiver = new AddressResultReceiver(new Handler());
-
         mLocationAddressTextView = (TextView) findViewById(R.id.location_address_view);
+        mLocationAddressTextView.setTypeface(customfont);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
         mFetchAddressButton = (Button) findViewById(R.id.fetch_address_button);
+        mFetchAddressButton.setTypeface(customfont);
+
 
         // Set defaults, then update using values stored in the Bundle.
         mAddressRequested = false;
@@ -60,13 +71,14 @@ public class LocationActivity extends AppCompatActivity {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
+
         updateUIWidgets();
     }
+
     @Override
     public void onStart() {
         super.onStart();
-
-        if (!checkPermissions()) {
+           if (!checkPermissions()) {
             requestPermissions();
         } else {
             getAddress();
@@ -170,7 +182,17 @@ public class LocationActivity extends AppCompatActivity {
      * Updates the address in the UI.
      */
     private void displayAddressOutput() {
+
         mLocationAddressTextView.setText(mAddressOutput);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(LocationActivity.this, HomeActitvity.class);
+//                i.putExtra("TextValue", mLocationAddressTextView.getText().toString());
+               startActivity(i);
+                finish();
+            }
+        }, SPLASH_LENGTH);
     }
 
     /**

@@ -44,12 +44,8 @@ public class FetchAddressIntentService extends IntentService {
     /**
      * The receiver where results are forwarded from this service.
      */
-    private ResultReceiver mReceiver;
-
-    /**
-     * This constructor is required, and calls the super IntentService(String)
-     * constructor with the name for a worker thread.
-     */
+    private ResultReceiver mReceiver;//This constructor is required, and calls the super IntentService(String)
+                                                                                    //* constructor with the name for a worker thread.
     public FetchAddressIntentService() {
         // Use the TAG to name the worker thread.
         super(TAG);
