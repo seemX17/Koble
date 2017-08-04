@@ -51,9 +51,11 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.0.0'
     compile 'com.google.firebase:firebase-crash:9.4.0'
     compile 'com.google.firebase:firebase-messaging:11.0.0'
+    compile 'com.google.firebase:firebase-database:11.0.0'
     compile 'com.google.api-client:google-api-client:1.21.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.21.0'
     compile 'com.google.apis:google-api-services-people:v1-rev2-1.21.0'
+
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

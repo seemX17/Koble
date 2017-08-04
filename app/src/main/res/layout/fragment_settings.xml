@@ -18,18 +18,17 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_userdefault"/>
-
-     <TextView
-      android:layout_width="154dp"
-      android:layout_height="30dp"
+    <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:textStyle="bold"
          android:gravity="center"
-      android:text="John Miller"
+      android:hint="Full name"
       android:layout_marginTop="10dp"
       android:paddingBottom="7dp"
          android:textSize="20dp"
-         android:id="@+id/username"/>
+         android:id="@+id/fullname"/>
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -138,10 +137,10 @@
                     android:text="Username"
                      android:textStyle="bold"/>
 
-                <TextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="John Miller"
+                    android:id="@+id/userid"
                     />
             </LinearLayout>
 
@@ -170,15 +169,22 @@
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
                 android:textStyle="bold"/>
-            <TextView
+
+            <EditText
+                android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+09 0000000"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
     </LinearLayout>
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="SAVE"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/colortab"
+    android:id="@+id/save"/>
 </LinearLayout>
 </ScrollView>
 

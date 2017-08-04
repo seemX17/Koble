@@ -7,7 +7,7 @@ package com.seemran.koble.Models;
 public class User {
     // Now in the screenshot  there are four things per row
    // There were 3 strings
-    public String name,message,time,image;
+    public String name, message, time, image;
 
     public User() {  //constructor
     }
